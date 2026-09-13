@@ -441,7 +441,7 @@ function renderToothpasteQuest(){
 }
 function daySummary(){
  setClock('00:55');
- render(`<div class="card day-summary-card"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/day_is_over.webp" alt="ДЕНЬ ЗАВЕРШЕНО! — Ти прожив ще один «абсолютно звичайний день».">
  <button class="day-summary-next-hotspot" id="summaryNext" aria-label="…ЧИ НІ?"></button>
  </div></div>`);
@@ -449,7 +449,7 @@ function daySummary(){
 }
 function surprise(){
  setClock('00:55');
- render(`<div class="card day-summary-card"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/or_not.webp" alt="ТИ ДУМАВ, ЦЕ БУВ ПРОСТО ЗВИЧАЙНИЙ ДЕНЬ?">
  <button class="day-summary-next-hotspot" id="know" aria-label="ТАК НІ МОЖЛИВО"></button>
  </div></div>`);
@@ -457,14 +457,14 @@ function surprise(){
 }
 function notNormal(){
  setClock('00:55');
- render(`<div class="card day-summary-card"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/anu.webp" alt="АНУ?"><button class="day-summary-next-hotspot" id="whyBirthday" aria-label="АНУ?"></button>
  </div></div>`);
  document.getElementById('whyBirthday').onclick=birthday;
 }
 function birthday(){
  setClock('00:55');
- render(`<div class="card day-summary-card"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/i_sho.webp" alt="ТОМУ ЩО У ТЕБЕ СЬОГОДНІ ДЕНЬ НАРОДЖЕННЯ!">
  <button class="day-summary-next-hotspot" id="birthdayWhat" aria-label="І ШО?"></button>
  </div></div>`);
@@ -472,7 +472,7 @@ function birthday(){
 }
 function birthdayGift(){
  setClock('00:55');
- render(`<div class="card day-summary-card"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/pizdarunok.webp" alt="Подарунок">
  <button class="day-summary-next-hotspot" id="gift" aria-label="Отримати гроші через Revolut"></button>
  </div></div>`);

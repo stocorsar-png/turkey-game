@@ -170,3 +170,8 @@ button:active{transform:scale(.985);filter:brightness(.88)}
 @keyframes eventFlash{0%{background:rgba(242,231,208,.14)}100%{background:rgba(242,231,208,0)}}
 @keyframes eventDangerFlash{0%{background:rgba(158,21,58,.16)}100%{background:rgba(158,21,58,0)}}
 @media (prefers-reduced-motion:reduce){#screen{transition:none!important}.event-flash:after,.event-danger:after{animation:none!important}}
+
+/* v11: subtle finale polish — visual only, no audio/vibration/shake. */
+.finale-card .night-image-scene img{animation:finaleReveal .9s ease-out both;}
+@keyframes finaleReveal{from{opacity:.72;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.finale-card .night-image-scene img{animation:none!important}}
