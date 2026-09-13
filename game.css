@@ -157,3 +157,18 @@ button:focus-visible{outline:2px solid #F2E7D0;outline-offset:3px}
 }
 /* v9 transition start state */
 #screen.screen-fade-in-start{opacity:0;transform:translateY(5px)}
+
+
+/* v10: atmospheric motion and event effects — artwork/layout unchanged. */
+#screen{transform-origin:center center;will-change:opacity,transform}
+#screen.screen-fade-in-start{opacity:0;transform:translateY(6px) scale(.992)}
+#screen:not(.screen-fade-in-start){transition:opacity .18s ease,transform .22s cubic-bezier(.2,.75,.2,1)}
+button{transition:transform .10s ease,filter .10s ease,opacity .12s ease}
+button:active{transform:scale(.978);filter:brightness(.84)}
+.event-shake{animation:eventShake .28s cubic-bezier(.36,.07,.19,.97)}
+.event-flash:after,.event-danger:after{content:'';position:fixed;inset:0;z-index:99998;pointer-events:none;animation:eventFlash .32s ease-out forwards}
+.event-danger:after{animation:eventDangerFlash .32s ease-out forwards}
+@keyframes eventShake{0%,100%{transform:translate3d(0,0,0)}25%{transform:translate3d(-5px,2px,0)}50%{transform:translate3d(5px,-2px,0)}75%{transform:translate3d(-3px,1px,0)}}
+@keyframes eventFlash{0%{background:rgba(242,231,208,.20)}100%{background:rgba(242,231,208,0)}}
+@keyframes eventDangerFlash{0%{background:rgba(158,21,58,.24)}100%{background:rgba(158,21,58,0)}}
+@media (prefers-reduced-motion:reduce){#screen{transition:none!important}.event-shake,.event-flash:after,.event-danger:after{animation:none!important}}

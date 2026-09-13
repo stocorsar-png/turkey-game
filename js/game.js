@@ -4,6 +4,52 @@ import { morningMeetings, afternoonMeetings, DAY_WITH_SOUP_BEFORE_LAUNDRY, DAY_W
 
 const screen=document.getElementById('screen');
 
+// v10: lightweight atmosphere layer using Web Audio (no external sound files).
+let audioCtx=null;
+let audioUnlocked=false;
+function ensureAudio(){
+  if(audioCtx) return audioCtx;
+  try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; }
+  return audioCtx;
+}
+function unlockAudio(){
+  const ctx=ensureAudio();
+  if(!ctx) return;
+  if(ctx.state==='suspended') ctx.resume().catch(()=>{});
+  audioUnlocked=true;
+}
+function tone(freq=520,duration=.055,type='sine',gain=.035,when=0){
+  const ctx=ensureAudio();
+  if(!ctx || !audioUnlocked) return;
+  const now=ctx.currentTime+when;
+  const o=ctx.createOscillator(), g=ctx.createGain();
+  o.type=type; o.frequency.setValueAtTime(freq,now);
+  g.gain.setValueAtTime(.0001,now);
+  g.gain.exponentialRampToValueAtTime(gain,now+.008);
+  g.gain.exponentialRampToValueAtTime(.0001,now+duration);
+  o.connect(g).connect(ctx.destination); o.start(now); o.stop(now+duration+.01);
+}
+function uiSound(kind='click'){
+  if(kind==='success'){ tone(660,.07,'triangle',.04); tone(880,.09,'triangle',.035,.06); return; }
+  if(kind==='danger'){ tone(180,.11,'sawtooth',.028); tone(120,.13,'sawtooth',.022,.07); return; }
+  if(kind==='whoosh'){ tone(260,.08,'sine',.018); tone(430,.12,'sine',.014,.06); return; }
+  tone(520,.045,'square',.018);
+}
+function haptic(kind='tap'){
+  if(typeof navigator.vibrate!=='function') return;
+  try{ navigator.vibrate(kind==='danger'?[18,28,18]:kind==='success'?28:10); }catch(e){}
+}
+function eventEffect(kind='success'){
+  document.body.classList.remove('event-shake','event-flash','event-danger');
+  void document.body.offsetWidth;
+  if(kind==='danger') document.body.classList.add('event-danger');
+  else document.body.classList.add('event-flash');
+  document.body.classList.add('event-shake');
+  setTimeout(()=>document.body.classList.remove('event-shake','event-flash','event-danger'),360);
+  uiSound(kind==='danger'?'danger':'success');
+  haptic(kind);
+}
+
 function setClock(t){ /* Час уже намальований на PNG; HTML його не дублює. */ }
 
 // v9: smooth scene transitions without changing the artwork or its fixed UI layout.
@@ -11,13 +57,22 @@ function render(body){
   screen.classList.add('screen-fade-in-start');
   screen.innerHTML=body;
   window.scrollTo(0,0);
-  // Force the initial state to be painted, then let CSS animate to full opacity.
   void screen.offsetWidth;
   requestAnimationFrame(()=>screen.classList.remove('screen-fade-in-start'));
+  if(body.includes('pizdarunok.webp')) setTimeout(()=>eventEffect('success'),180);
+  else if(body.includes('or_not.webp') || body.includes('anu.webp')) setTimeout(()=>eventEffect('danger'),180);
+  else if(body.includes('i_sho.webp')) setTimeout(()=>eventEffect('success'),180);
 }
 
 // v9.1: rely on the browser's native click handling for touch buttons.
 // The previous pointerup/click guard could cancel the real click on iPhone Safari.
+// v10: unlock audio on the user's first gesture, then add a subtle click + haptic.
+screen.addEventListener('click', e=>{
+  unlockAudio();
+  const target=e.target.closest('button,[role=button]');
+  if(target){ uiSound('click'); haptic('tap'); }
+},{capture:true});
+screen.addEventListener('pointerdown', ()=>unlockAudio(), {capture:true,passive:true});
 // v9: gently warm up likely next scenes after the first screen is visible.
 const preloadCache=new Set();
 function preloadImages(list){
