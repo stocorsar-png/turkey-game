@@ -1,0 +1,110 @@
+
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#0b0c10;color:#f4f4f5;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;padding:18px}
+#app{width:min(650px,100%)}
+.top{display:none}
+.card{background:#191a1f;border:1px solid #34353c;border-radius:22px;padding:24px;box-shadow:0 16px 40px #0009}
+.card img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+button{display:block;width:100%;border:0;border-radius:13px;padding:16px 14px;margin:7px 0;font-size:16px;font-weight:800;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+.option{background:#eee;color:#111}.next{background:#fff;color:#111}.meeting{background:#24252a;color:#fff;border:1px solid #414249;text-align:left}
+.calendar-card,.wake-image-card,.breakfast-image-card,.breakfast-result-card,.call-list-image-card,.call-detail-image-card,.laptop-scene-card,.fox-time-card,.fox-meeting-card,.night-image-card,.day-summary-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
+.menu-poster,.wake-image,.breakfast-image,.breakfast-result,.call-list-image,.call-detail-image,.laptop-scene,.fox-time-scene,.fox-meeting-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
+.menu-poster img,.wake-image img,.breakfast-image img,.breakfast-result img,.call-list-image>img,.call-detail-image img,.laptop-scene img,.fox-time-scene img,.fox-meeting-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.day-hotspots{position:absolute;left:2.5%;right:2.5%;bottom:2.4%;height:20.5%;display:grid;grid-template-columns:repeat(5,1fr);gap:1.1%}
+.day-hotspot{margin:0;padding:0;min-height:0;width:100%;height:100%;border:2px solid transparent;border-radius:10px;background:transparent}
+.wake-hotspot{position:absolute;left:10%;right:10%;bottom:7%;height:11%;border:2px solid transparent;border-radius:18px;background:transparent}
+.breakfast-food-hotspots{position:absolute;left:3.2%;right:3.2%;bottom:1.8%;height:17.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:3.1%}
+.breakfast-food-hotspot{display:block!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;border:2px solid transparent!important;border-radius:16px!important;background:transparent!important}
+.breakfast-work-hotspot{position:absolute;left:7.5%;right:7.5%;bottom:4.7%;height:10.8%;border:2px solid transparent;border-radius:18px;background:transparent}
+.call-list-hotspot{position:absolute;left:7%;right:7%;height:7.9%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:3}
+.call-detail-image-hotspot{cursor:pointer;outline:none;touch-action:manipulation}
+.laundry-hotspot{position:absolute;left:14%;right:14%;height:7.1%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5}
+.fox-choice-hotspot{position:absolute;left:7%;right:7%;height:12%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5}
+.fox-choice-hotspot.laptop{bottom:22%}.fox-choice-hotspot.park{bottom:6%}
+
+/* Вечірній вибір: готові постери з кнопками, що клікаються поверх малюнка. */
+.evening-image-card,.person-choice-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
+.evening-scene,.person-choice-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
+.evening-scene img,.person-choice-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.evening-hotspot,.person-choice-hotspot{position:absolute;left:7%;right:7%;border:0!important;background:transparent!important;margin:0!important;padding:0!important;cursor:pointer;z-index:5}
+/* 4 великі кнопки на нижній частині drink_vegan.webp */
+.evening-hotspot{height:7.2%}
+.evening-dimon{top:63.8%}.evening-maika{top:71.8%}.evening-mykyta{top:79.8%}.evening-dinner{top:87.8%}
+/* Вибір Дімона — 3 кнопки. */
+.dimon-choice{height:6.4%;pointer-events:auto!important;touch-action:manipulation!important}.dimon-call{top:61.5%}.dimon-walk{top:68.3%}.dimon-refuse{top:75.1%}
+/* Вибір Майки — 3 однакові кнопки. */
+.maika-choice{height:6.4%;pointer-events:auto!important;touch-action:manipulation!important}.maika-1{top:61.0%}.maika-2{top:67.8%}.maika-3{top:74.6%}
+/* Вибір Микити — 4 кнопки: синя, червона, зелена, фіолетова. */
+.mykyta-choice{height:7.2%}.mykyta-spati{top:63.8%}.mykyta-bar{top:71.8%}.mykyta-velodrom{top:79.8%}.mykyta-refuse{top:87.8%}
+.fox-next-hotspot{position:absolute;inset:0;border:0!important;background:transparent!important;margin:0!important;padding:0!important;border-radius:0!important;z-index:5}
+.choice-card h1{margin-top:0;font-size:30px;line-height:1.05}.choice-card .choice-btn{min-height:66px;text-align:left;font-size:20px}
+.quest-head{display:flex;justify-content:space-between;font-size:13px;color:#bbb;margin:10px 0 6px}
+.progress{height:8px;background:#303137;border-radius:99px;overflow:hidden;margin:10px 0 16px}
+.progress span{display:block;height:100%;background:#eee}
+.quest-list{display:flex;flex-direction:column;gap:3px}
+.quest-btn{text-align:left;min-height:52px}
+.art{height:310px;border-radius:17px;background:linear-gradient(145deg,#222630,#101116);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.art .turkey{font-size:150px}
+.center{text-align:center}.big{font-size:150px;line-height:1}
+.summary{font-size:18px;line-height:1.15;margin:18px 0}
+@media(max-width:700px){
+ body{padding:0;display:block;background:#08090c}
+ #app{width:100%;max-width:390px;min-height:100svh;margin:0 auto}
+ .top{padding:8px 12px 10px;font-size:12px}
+ .card{width:100%;max-width:390px;min-height:calc(100vh - 58px);border-radius:20px;padding:16px}
+ button{min-height:54px;font-size:15px;margin:5px 0}
+ .art{height:38vh;min-height:235px;max-height:330px}
+ .art .turkey{font-size:125px}
+ .big{font-size:120px}
+}
+
+/* Квест із зубною пастою */
+.laundry-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
+.laundry-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
+.laundry-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.quest-progress{position:absolute;top:2.5%;left:6%;min-width:68px;padding:8px 12px;border-radius:12px;background:#102814;color:#fff;font-size:clamp(18px,5vw,28px);font-weight:900;line-height:1;text-align:center;z-index:20;pointer-events:none}
+.laundry-hotspot{display:block!important;width:auto!important;min-height:0!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+
+/* Відпочинок після лиси */
+.rest-choice-scene,.night-image-scene{position:relative;width:100%;}
+.rest-choice-scene img,.night-image-scene img{display:block;width:100%;height:auto;}
+.rest-choice-hotspot,.night-next-hotspot,.day-summary-next-hotspot{position:absolute;border:0;background:transparent;cursor:pointer;z-index:3;}
+/* Чотири кнопки розташовані в нижній частині wtd_fast.webp. */
+.rest-choice-hotspot{left:6%;width:88%;height:7%;}
+.rest-choice-1{top:64%;}.rest-choice-2{top:72%;}.rest-choice-3{top:80%;}.rest-choice-4{top:88%;}
+.night-next-hotspot{left:5%;top:82%;width:90%;height:15%;}
+.day-summary-next-hotspot{left:7%;top:83%;width:86%;height:12%;}
+
+
+/* Інтерактивний душ: справжній touch-повзунок поверх намальованої шкали. */
+.soup-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
+.soup-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
+.soup-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.soup-slider{position:absolute;left:18.4%;top:79.6%;width:59.2%;height:44px;margin:0;z-index:8;appearance:none;-webkit-appearance:none;background:transparent;touch-action:pan-x;cursor:pointer;padding:0}
+.soup-slider::-webkit-slider-runnable-track{height:18px;background:transparent}
+.soup-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:38px;height:38px;border-radius:50%;background:#e7e7e7;border:3px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45);margin-top:-10px}
+.soup-slider::-moz-range-track{height:18px;background:transparent}
+.soup-slider::-moz-range-thumb{width:38px;height:38px;border-radius:50%;background:#e7e7e7;border:3px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+
+
+
+/* iPhone / touch optimization */
+html,body{width:100%;min-height:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;overscroll-behavior-x:none}
+body{padding:max(0px,env(safe-area-inset-top)) max(0px,env(safe-area-inset-right)) max(0px,env(safe-area-inset-bottom)) max(0px,env(safe-area-inset-left));touch-action:manipulation}
+#app{max-width:650px;width:100%}
+button,[role="button"]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media (max-width:700px){
+  #app{max-width:100%;width:100%;min-height:100svh;padding:0}
+  .card{max-width:100%;width:100%;border-radius:0;padding:0}
+  .menu-poster,.wake-image,.breakfast-image,.breakfast-result,.call-list-image,.call-detail-image,.laptop-scene,.fox-time-scene,.fox-meeting-scene,.evening-scene,.person-choice-scene,.laundry-scene,.rest-choice-scene,.night-image-scene,.soup-scene{border-radius:0}
+}
+@media (orientation:landscape) and (max-height:600px){body:before{content:'Поверніть iPhone вертикально';position:fixed;inset:0;z-index:99999;background:#11100f;color:#f2e7d0;display:flex;align-items:center;justify-content:center;font:700 28px Arial;text-align:center;padding:30px}}
+/* v3: reliable iPhone touch targets and image rendering */
+.breakfast-food-hotspot,.breakfast-work-hotspot{touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer;z-index:10}
+.breakfast-result img{min-height:1px}
+.breakfast-result[data-image-error="1"]::after{content:'КАРТИНКА НЕ ЗАВАНТАЖИЛАСЬ — ОНОВІТЬ СТОРІНКУ';position:absolute;left:8%;right:8%;top:48%;padding:18px;text-align:center;color:#F2E7D0;background:#11100F;font-weight:800;font-size:20px;line-height:1.2}
+
+/* v4: Dimon choice uses coordinate hit-testing in JS, not overlapping transparent buttons. */
+.dimon-choice-scene{touch-action:none!important;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.dimon-choice-scene img{pointer-events:none}
