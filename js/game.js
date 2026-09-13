@@ -4,6 +4,12 @@ import { morningMeetings, afternoonMeetings, DAY_WITH_SOUP_BEFORE_LAUNDRY, DAY_W
 
 const screen=document.getElementById('screen');
 
+// v10.3: the game is intentionally silent. Prevent any accidental media playback.
+document.addEventListener('play', (e)=>{
+  const el=e.target;
+  if(el && (el.tagName==='AUDIO' || el.tagName==='VIDEO')) { el.pause(); el.currentTime=0; }
+}, true);
+
 // v10.2: quiet atmosphere layer — no sounds, no vibration, no screen shake.
 function eventEffect(kind='success'){
   document.body.classList.remove('event-flash','event-danger');
