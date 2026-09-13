@@ -16,26 +16,8 @@ function render(body){
   requestAnimationFrame(()=>screen.classList.remove('screen-fade-in-start'));
 }
 
-// v9: stop accidental double taps / duplicate pointerup+click activation.
-let lastActivationTarget=null;
-let lastActivationAt=0;
-screen.addEventListener('pointerup', e=>{
-  const target=e.target.closest('button,[role=button]');
-  if(!target)return;
-  lastActivationTarget=target;
-  lastActivationAt=performance.now();
-},{capture:true,passive:true});
-screen.addEventListener('click', e=>{
-  if(e.detail===0)return;
-  const target=e.target.closest('button,[role=button]');
-  if(!target)return;
-  const now=performance.now();
-  if(target===lastActivationTarget && now-lastActivationAt<500){
-    e.preventDefault();
-    e.stopPropagation();
-  }
-},{capture:true});
-
+// v9.1: rely on the browser's native click handling for touch buttons.
+// The previous pointerup/click guard could cancel the real click on iPhone Safari.
 // v9: gently warm up likely next scenes after the first screen is visible.
 const preloadCache=new Set();
 function preloadImages(list){
