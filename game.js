@@ -180,56 +180,26 @@ function finishWork(){
  if(DAY_WITH_SOUP_BEFORE_LAUNDRY.includes(S.day))return turkeySoup(laundryStart);
  laundryStart();
 }
-// Душ / суп: тихий процедурний звук води, який існує тільки на цій сцені.
+// Душ / суп: реальний loop-звук води тільки на цій сцені.
 function createSoupWaterSound(){
- const AudioCtx=window.AudioContext||window.webkitAudioContext;
- if(!AudioCtx)return null;
- const ctx=new AudioCtx();
- const master=ctx.createGain();
- const filter=ctx.createBiquadFilter();
- filter.type='lowpass';
- filter.frequency.value=1800;
- filter.Q.value=0.35;
- master.gain.value=0.0015;
- filter.connect(master).connect(ctx.destination);
-
- // М'який шум — імітація постійного шуму води.
- const buffer=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);
- const data=buffer.getChannelData(0);
- for(let i=0;i<data.length;i++){
-   const white=Math.random()*2-1;
-   data[i]=white*0.42;
- }
- const noise=ctx.createBufferSource();
- noise.buffer=buffer;
- noise.loop=true;
- noise.connect(filter);
- noise.start();
-
- // Дуже тихий низький шар додає відчуття потоку води.
- const rumble=ctx.createOscillator();
- const rumbleGain=ctx.createGain();
- rumble.type='sine';
- rumble.frequency.value=72;
- rumbleGain.gain.value=0.018;
- rumble.connect(rumbleGain).connect(master);
- rumble.start();
-
+ const audio=new Audio('water.wav?v=1');
+ audio.loop=true;
+ audio.preload='auto';
+ audio.volume=0;
+ let started=false;
+ const start=()=>{
+  if(started)return;
+  started=true;
+  const p=audio.play();
+  if(p&&p.catch)p.catch(()=>{started=false;});
+ };
  const setVolume=(value)=>{
-   const v=Math.max(0.0015,0.0015+Math.pow(value/100,1.35)*0.105);
-   master.gain.setTargetAtTime(v,ctx.currentTime,0.035);
+  audio.volume=Math.min(0.9,0.03+Math.pow(value/100,1.15)*0.87);
  };
  const stop=()=>{
-   try{
-     master.gain.setTargetAtTime(0.0001,ctx.currentTime,0.04);
-     setTimeout(()=>{
-       try{noise.stop();}catch{}
-       try{rumble.stop();}catch{}
-       try{ctx.close();}catch{}
-     },180);
-   }catch{}
+  try{audio.pause();audio.currentTime=0;audio.volume=0;}catch{}
  };
- return {ctx,setVolume,stop};
+ return {start,setVolume,stop};
 }
 
 function turkeySoup(next){
@@ -241,13 +211,9 @@ function turkeySoup(next){
  const slider=document.getElementById('soupSlider');
  const waterSound=createSoupWaterSound();
  let finished=false;
- let audioStarted=false;
- const startAudio=()=>{
-   if(!waterSound || audioStarted)return;
-   audioStarted=true;
-   waterSound.ctx.resume().catch(()=>{});
- };
+ const startAudio=()=>{ if(waterSound)waterSound.start(); };
  slider.addEventListener('pointerdown',startAudio,{passive:true});
+ slider.addEventListener('touchstart',startAudio,{passive:true});
  slider.addEventListener('input',()=>{
    startAudio();
    const value=Number(slider.value);
