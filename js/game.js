@@ -49,7 +49,7 @@ function preloadImages(list){
 setTimeout(()=>preloadImages([
  'images/alarm_0827.webp','images/alarm_0832.webp','images/alarm_0837.webp',
  'images/breakfast.webp','images/breakfast_egg.webp','images/breakfast_fish.webp','images/breakfast_bread.webp',
- 'images/morning_calls.webp','images/home_call_0900.webp','images/home_call_1015.webp',
+ 'images/morning_calls.webp?v=13','images/home_call_0900.webp','images/home_call_1015.webp',
  'images/home_call_1130.webp','images/home_call_1215.webp'
 ]),1100);
 function btn(text,fn,cls='option'){const b=document.createElement('button');b.type='button';b.className=cls;b.textContent=text;if(fn)b.onclick=fn;return b}
@@ -122,10 +122,10 @@ function renderCalls(which){
  render(`<div class="card call-list-image-card"><div class="call-list-image">
  <img src="${img}" alt="Список коллів">
  <div class="quest-progress">${done.size}/${arr.length}</div>
- <button class="call-list-hotspot" style="top:55.6%" data-call="${prefix}1"></button>
- <button class="call-list-hotspot" style="top:64%" data-call="${prefix}2"></button>
- <button class="call-list-hotspot" style="top:72.3%" data-call="${prefix}3"></button>
- <button class="call-list-hotspot" style="top:80.6%" data-call="${prefix}4"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'58.8%':'60.9%'}" data-call="${prefix}1"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'66.2%':'68.3%'}" data-call="${prefix}2"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'74.8%':'76.4%'}" data-call="${prefix}3"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'83.2%':'84.2%'}" data-call="${prefix}4"></button>
  </div></div>`);
  document.querySelectorAll('[data-call]').forEach(b=>b.onclick=()=>openCall(which,b.dataset.call));
 }
@@ -180,28 +180,6 @@ function finishWork(){
  if(DAY_WITH_SOUP_BEFORE_LAUNDRY.includes(S.day))return turkeySoup(laundryStart);
  laundryStart();
 }
-// Душ / суп: реальний loop-звук води тільки на цій сцені.
-function createSoupWaterSound(){
- const audio=new Audio('water.wav?v=1');
- audio.loop=true;
- audio.preload='auto';
- audio.volume=0;
- let started=false;
- const start=()=>{
-  if(started)return;
-  started=true;
-  const p=audio.play();
-  if(p&&p.catch)p.catch(()=>{started=false;});
- };
- const setVolume=(value)=>{
-  audio.volume=Math.min(0.9,0.03+Math.pow(value/100,1.15)*0.87);
- };
- const stop=()=>{
-  try{audio.pause();audio.currentTime=0;audio.volume=0;}catch{}
- };
- return {start,setVolume,stop};
-}
-
 function turkeySoup(next){
  setClock('18:00');
  render(`<div class="card soup-card"><div class="soup-scene">
@@ -209,19 +187,12 @@ function turkeySoup(next){
   <input type="range" class="soup-slider" id="soupSlider" min="0" max="100" value="0" aria-label="Температура води" aria-valuetext="Холодна вода">
  </div></div>`);
  const slider=document.getElementById('soupSlider');
- const waterSound=createSoupWaterSound();
  let finished=false;
- const startAudio=()=>{ if(waterSound)waterSound.start(); };
- slider.addEventListener('pointerdown',startAudio,{passive:true});
- slider.addEventListener('touchstart',startAudio,{passive:true});
  slider.addEventListener('input',()=>{
-   startAudio();
    const value=Number(slider.value);
-   if(waterSound)waterSound.setVolume(value);
    slider.setAttribute('aria-valuetext', value>=70 ? (value>=95 ? 'Дуже гаряча вода' : 'Гаряча вода') : 'Холодна вода');
    if(!finished && value>=95){
      finished=true;
-     if(waterSound)waterSound.stop();
      next();
    }
  });
@@ -235,10 +206,10 @@ function laundryStart(){
 function renderLaundry(){
  const done=S.laundry.size;
  render(`<div class="card breakfast-image-card"><div class="breakfast-image">
- <img src="images/1sock.webp" alt="18:00 — Час прати!">
- <button class="laundry-hotspot" style="top:72.6%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
- <button class="laundry-hotspot" style="top:82.1%" data-laundry="hang" aria-label="Розвісити білизну"></button>
- <button class="laundry-hotspot" style="top:91.2%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
+ <img src="images/1sock.webp?v=13" alt="18:00 — Час прати!">
+ <button class="laundry-hotspot" style="top:71.0%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
+ <button class="laundry-hotspot" style="top:78.9%" data-laundry="hang" aria-label="Розвісити білизну"></button>
+ <button class="laundry-hotspot" style="top:86.7%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
  <div class="quest-progress">${done}/3</div>
  </div></div>`);
  document.querySelectorAll('[data-laundry]').forEach(b=>b.onclick=()=>completeLaundry(b.dataset.laundry));
@@ -256,7 +227,7 @@ function completeLaundry(id){
 function eveningChoice(){
  setClock('18:05');
  render(`<div class="card evening-image-card"><div class="evening-scene">
-  <img src="images/drink_vegan.webp" alt="18:05 — ЩО РОБИМО СЬОГОДНІ?">
+  <img src="images/drink_vegan.webp?v=13" alt="18:05 — ЩО РОБИМО СЬОГОДНІ?">
   <button class="evening-hotspot evening-dimon" id="eveningDimon" aria-label="Дімон"></button>
   <button class="evening-hotspot evening-maika" id="eveningMaika" aria-label="Майка"></button>
   <button class="evening-hotspot evening-mykyta" id="eveningMykyta" aria-label="Микита — аферіст"></button>
