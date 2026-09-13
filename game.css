@@ -108,3 +108,14 @@ button,[role="button"]{-webkit-tap-highlight-color:transparent;touch-action:mani
 /* v4: Dimon choice uses coordinate hit-testing in JS, not overlapping transparent buttons. */
 .dimon-choice-scene{touch-action:none!important;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .dimon-choice-scene img{pointer-events:none}
+
+/* v7: iPhone/PWA safe area + launch splash */
+:root{--safe-bottom:env(safe-area-inset-bottom,0px);--safe-top:env(safe-area-inset-top,0px)}
+html{background:#08090c}
+body{min-height:100dvh;min-height:100svh;padding:0}
+#app{padding-bottom:var(--safe-bottom)}
+#splash{position:fixed;inset:0;z-index:100000;background:#08090c;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--safe-top) 24px var(--safe-bottom);transition:opacity .35s ease,visibility .35s ease}
+#splash img{width:min(46vw,220px);height:min(46vw,220px);object-fit:cover;border-radius:22%;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+.splash-title{margin-top:28px;text-align:center;color:#F2E7D0;font-family:Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,8vw,58px);line-height:.92;letter-spacing:.5px;text-shadow:3px 3px 0 #17130F}
+.splash-hidden{opacity:0;visibility:hidden;pointer-events:none}
+@media(max-width:700px){#app{min-height:100dvh;min-height:100svh}}

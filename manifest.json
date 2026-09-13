@@ -1,0 +1,16 @@
+{
+  "name": "Звичайний день індика",
+  "short_name": "Індик",
+  "description": "Звичайний день індика — browser microgame",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08090c",
+  "theme_color": "#11100f",
+  "orientation": "portrait",
+  "icons": [
+    {"src":"icons/icon-180.png","sizes":"180x180","type":"image/png","purpose":"any maskable"},
+    {"src":"icons/icon-167.png","sizes":"167x167","type":"image/png","purpose":"any maskable"},
+    {"src":"icons/icon-152.png","sizes":"152x152","type":"image/png","purpose":"any maskable"}
+  ]
+}
