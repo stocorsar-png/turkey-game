@@ -5,7 +5,54 @@ import { morningMeetings, afternoonMeetings, DAY_WITH_SOUP_BEFORE_LAUNDRY, DAY_W
 const screen=document.getElementById('screen');
 
 function setClock(t){ /* Час уже намальований на PNG; HTML його не дублює. */ }
-function render(body){screen.innerHTML=body;window.scrollTo(0,0)}
+
+// v9: smooth scene transitions without changing the artwork or its fixed UI layout.
+function render(body){
+  screen.classList.add('screen-fade-in-start');
+  screen.innerHTML=body;
+  window.scrollTo(0,0);
+  // Force the initial state to be painted, then let CSS animate to full opacity.
+  void screen.offsetWidth;
+  requestAnimationFrame(()=>screen.classList.remove('screen-fade-in-start'));
+}
+
+// v9: stop accidental double taps / duplicate pointerup+click activation.
+let lastActivationTarget=null;
+let lastActivationAt=0;
+screen.addEventListener('pointerup', e=>{
+  const target=e.target.closest('button,[role=button]');
+  if(!target)return;
+  lastActivationTarget=target;
+  lastActivationAt=performance.now();
+},{capture:true,passive:true});
+screen.addEventListener('click', e=>{
+  if(e.detail===0)return;
+  const target=e.target.closest('button,[role=button]');
+  if(!target)return;
+  const now=performance.now();
+  if(target===lastActivationTarget && now-lastActivationAt<500){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{capture:true});
+
+// v9: gently warm up likely next scenes after the first screen is visible.
+const preloadCache=new Set();
+function preloadImages(list){
+  list.forEach(src=>{
+    if(!src || preloadCache.has(src))return;
+    preloadCache.add(src);
+    const img=new Image();
+    img.decoding='async';
+    img.src=src;
+  });
+}
+setTimeout(()=>preloadImages([
+ 'images/alarm_0827.webp','images/alarm_0832.webp','images/alarm_0837.webp',
+ 'images/breakfast.webp','images/breakfast_egg.webp','images/breakfast_fish.webp','images/breakfast_bread.webp',
+ 'images/morning_calls.webp','images/home_call_0900.webp','images/home_call_1015.webp',
+ 'images/home_call_1130.webp','images/home_call_1215.webp'
+]),1100);
 function btn(text,fn,cls='option'){const b=document.createElement('button');b.type='button';b.className=cls;b.textContent=text;if(fn)b.onclick=fn;return b}
 function addButtons(c,items){items.forEach(([t,f,cl])=>c.appendChild(btn(t,f,cl||'option')))}
 function questLayout(title,subtitle,done,total,label,inner){

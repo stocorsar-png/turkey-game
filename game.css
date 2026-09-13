@@ -136,3 +136,24 @@ body{min-height:100dvh;min-height:100svh;padding:0}
 @media (max-width:700px) and (display-mode: standalone){
   #app{height:100dvh;min-height:100dvh}
 }
+
+/* v9: polished mobile-game interaction */
+#screen{transition:opacity .12s ease,transform .12s ease;will-change:opacity,transform}
+#screen.screen-fade-out{opacity:0;transform:translateY(5px)}
+
+button{transition:transform .09s ease,filter .09s ease,opacity .12s ease}
+button:active{transform:scale(.985);filter:brightness(.86)}
+button:focus-visible{outline:2px solid #F2E7D0;outline-offset:3px}
+
+/* Transparent image hotspots keep the visual artwork unchanged, but still give tactile feedback. */
+.day-hotspot:active,.wake-hotspot:active,.breakfast-food-hotspot:active,.breakfast-work-hotspot:active,
+.call-list-hotspot:active,.call-detail-image-hotspot:active,.laundry-hotspot:active,.fox-choice-hotspot:active,
+.evening-hotspot:active,.person-choice-hotspot:active,.fox-next-hotspot:active,.rest-choice-hotspot:active,
+.night-next-hotspot:active,.day-summary-next-hotspot:active{transform:scale(.985);filter:brightness(.88)}
+
+@media (prefers-reduced-motion: reduce){
+  #screen{transition:none!important}
+  button{transition:none!important}
+}
+/* v9 transition start state */
+#screen.screen-fade-in-start{opacity:0;transform:translateY(5px)}
