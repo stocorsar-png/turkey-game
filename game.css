@@ -119,3 +119,20 @@ body{min-height:100dvh;min-height:100svh;padding:0}
 .splash-title{margin-top:28px;text-align:center;color:#F2E7D0;font-family:Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,8vw,58px);line-height:.92;letter-spacing:.5px;text-shadow:3px 3px 0 #17130F}
 .splash-hidden{opacity:0;visibility:hidden;pointer-events:none}
 @media(max-width:700px){#app{min-height:100dvh;min-height:100svh}}
+
+/* v8: Safari toolbar-safe portrait rendering.
+   In normal Safari, fit the complete 1080x2340 artwork inside the visible viewport
+   instead of letting the browser's floating bottom controls cover the artwork buttons.
+   In standalone/PWA mode, the artwork fills the iPhone viewport normally. */
+@media (max-width:700px) and (display-mode: browser){
+  body{overflow:hidden}
+  #app{height:100dvh;min-height:100dvh;max-height:100dvh;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+  #screen{width:100%;height:100%;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+  .menu-poster,.wake-image,.breakfast-image,.breakfast-result,.call-list-image,.call-detail-image,.laptop-scene,.fox-time-scene,.fox-meeting-scene,.evening-scene,.person-choice-scene,.laundry-scene,.rest-choice-scene,.night-image-scene,.soup-scene{width:100%;height:100dvh;max-height:100dvh;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;border-radius:0}
+  .menu-poster img,.wake-image img,.breakfast-image img,.breakfast-result img,.call-list-image>img,.call-detail-image img,.laptop-scene img,.fox-time-scene img,.fox-meeting-scene img,.evening-scene img,.person-choice-scene img,.laundry-scene img,.rest-choice-scene img,.night-image-scene img,.soup-scene img{width:auto!important;height:100%!important;max-width:100%;max-height:100dvh;object-fit:contain;margin:0 auto}
+}
+
+/* Keep the intended edge-to-edge artwork when launched from the Home Screen. */
+@media (max-width:700px) and (display-mode: standalone){
+  #app{height:100dvh;min-height:100dvh}
+}
