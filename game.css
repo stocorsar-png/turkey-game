@@ -63,7 +63,7 @@ button:disabled{opacity:.45;cursor:default}
 .laundry-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
 .laundry-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
 .laundry-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
-.quest-progress{position:absolute;top:2.5%;left:6%;min-width:68px;padding:8px 12px;border-radius:12px;background:#102814;color:#fff;font-size:clamp(18px,5vw,28px);font-weight:900;line-height:1;text-align:center;z-index:20;pointer-events:none}
+.quest-progress{position:absolute;top:2.5%;left:6%;min-width:68px;padding:8px 12px;border-radius:12px;background:#11100F;color:#fff;font-size:clamp(18px,5vw,28px);font-weight:900;line-height:1;text-align:center;z-index:20;pointer-events:none}
 .laundry-hotspot{display:block!important;width:auto!important;min-height:0!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
 
 /* Відпочинок після лиси */

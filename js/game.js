@@ -479,8 +479,13 @@ function birthdayGift(){
  document.getElementById('gift').onclick=finalGift;
 }
 function finalGift(){
- // Замініть адресу нижче на персональне платіжне посилання Revolut користувача.
- const REVOLUT_LINK='https://www.revolut.com/';
+ const REVOLUT_LINK='https://revolut.me/p/bEG59iMq4o';
  window.open(REVOLUT_LINK,'_blank','noopener');
 }
-calendar();
+const SECRET_TOKEN='7Kx92LmP4Q';
+const params=new URLSearchParams(window.location.search);
+const hasSecret=params.get('gift')===SECRET_TOKEN;
+if(hasSecret){calendar();}else{
+ setClock('');
+ render(`<div class="card" style="display:flex;align-items:center;justify-content:center;min-height:70vh;text-align:center;padding:30px"><div><h2>🔒 ДОСТУП ЗАКРИТО</h2><p>Цей подарунок доступний лише за спеціальним посиланням.</p></div></div>`);
+}
