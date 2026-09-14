@@ -16,27 +16,28 @@ button:disabled{opacity:.45;cursor:default}
 .wake-hotspot{position:absolute;left:10%;right:10%;bottom:7%;height:11%;border:2px solid transparent;border-radius:18px;background:transparent}
 .breakfast-food-hotspots{position:absolute;left:3.2%;right:3.2%;bottom:1.8%;height:17.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:3.1%}
 .breakfast-food-hotspot{display:block!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;border:2px solid transparent!important;border-radius:16px!important;background:transparent!important}
-.breakfast-work-hotspot{position:absolute;left:7.5%;right:7.5%;bottom:4.7%;height:10.8%;border:2px solid transparent;border-radius:18px;background:transparent}
-.call-list-hotspot{position:absolute;left:7%;right:7%;height:7.9%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:3}
+.breakfast-work-hotspot{position:absolute;left:8.3333%;width:83.3333%;top:87.6068%;height:6.4103%;border:2px solid transparent;border-radius:18px;background:transparent;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.call-list-image img{pointer-events:none}
+.call-list-hotspot{position:absolute;left:8.3333%;width:83.3333%;height:6.4103%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:3;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
 .call-detail-image-hotspot{cursor:pointer;outline:none;touch-action:manipulation}
-.laundry-hotspot{position:absolute;left:14%;right:14%;height:7.1%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5}
-.fox-choice-hotspot{position:absolute;left:7%;right:7%;height:12%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5}
-.fox-choice-hotspot.laptop{bottom:22%}.fox-choice-hotspot.park{bottom:6%}
+.laundry-hotspot{position:absolute;left:8.3333%;width:83.3333%;height:6.4103%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.fox-choice-hotspot{position:absolute;left:8.3333%;width:83.3333%;height:6.4103%;border:2px solid transparent;border-radius:18px;background:transparent;padding:0;margin:0;z-index:5;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.fox-choice-hotspot.laptop{top:79.9145%}.fox-choice-hotspot.park{top:87.6068%}
 
 /* Вечірній вибір: готові постери з кнопками, що клікаються поверх малюнка. */
 .evening-image-card,.person-choice-card{padding:0!important;overflow:hidden!important;background:#08090c!important;border:0!important;box-shadow:none!important}
 .evening-scene,.person-choice-scene{position:relative;width:100%;line-height:0;overflow:hidden;border-radius:18px}
 .evening-scene img,.person-choice-scene img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
-.evening-hotspot,.person-choice-hotspot{position:absolute;left:7%;right:7%;border:0!important;background:transparent!important;margin:0!important;padding:0!important;cursor:pointer;z-index:5}
+.evening-hotspot,.person-choice-hotspot{position:absolute;left:7%;right:7%;border:0!important;background:transparent!important;margin:0!important;padding:0!important;cursor:pointer;z-index:5;pointer-events:auto!important;-webkit-tap-highlight-color:transparent}
 /* 4 великі кнопки на нижній частині drink_vegan.webp */
-.evening-hotspot{height:7.2%}
-.evening-dimon{top:63.8%}.evening-maika{top:71.8%}.evening-mykyta{top:79.8%}.evening-dinner{top:87.8%}
+.evening-hotspot{height:6.4103%;left:8.3333%;right:auto;width:83.3333%}
+.evening-dimon{top:64.5299%}.evening-maika{top:72.2222%}.evening-mykyta{top:79.9145%}.evening-dinner{top:87.6068%}
 /* Вибір Дімона — 3 кнопки. */
-.dimon-choice{height:6.4%;pointer-events:auto!important;touch-action:manipulation!important}.dimon-call{top:61.5%}.dimon-walk{top:68.3%}.dimon-refuse{top:75.1%}
+.dimon-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;pointer-events:auto!important;touch-action:manipulation!important}.dimon-call{top:72.2222%}.dimon-walk{top:79.9145%}.dimon-refuse{top:87.6068%}
 /* Вибір Майки — 3 однакові кнопки. */
-.maika-choice{height:6.4%;pointer-events:auto!important;touch-action:manipulation!important}.maika-1{top:61.0%}.maika-2{top:67.8%}.maika-3{top:74.6%}
+.maika-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;pointer-events:auto!important;touch-action:manipulation!important}.maika-1{top:72.2222%}.maika-2{top:79.9145%}.maika-3{top:87.6068%}
 /* Вибір Микити — 4 кнопки: синя, червона, зелена, фіолетова. */
-.mykyta-choice{height:7.2%}.mykyta-spati{top:63.8%}.mykyta-bar{top:71.8%}.mykyta-velodrom{top:79.8%}.mykyta-refuse{top:87.8%}
+.mykyta-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;touch-action:manipulation!important}.mykyta-spati{top:64.5299%}.mykyta-bar{top:72.2222%}.mykyta-velodrom{top:79.9145%}.mykyta-refuse{top:87.6068%}
 .fox-next-hotspot{position:absolute;inset:0;border:0!important;background:transparent!important;margin:0!important;padding:0!important;border-radius:0!important;z-index:5}
 .choice-card h1{margin-top:0;font-size:30px;line-height:1.05}.choice-card .choice-btn{min-height:66px;text-align:left;font-size:20px}
 .quest-head{display:flex;justify-content:space-between;font-size:13px;color:#bbb;margin:10px 0 6px}
@@ -71,10 +72,10 @@ button:disabled{opacity:.45;cursor:default}
 .rest-choice-scene img,.night-image-scene img{display:block;width:100%;height:auto;}
 .rest-choice-hotspot,.night-next-hotspot,.day-summary-next-hotspot{position:absolute;border:0;background:transparent;cursor:pointer;z-index:3;}
 /* Чотири кнопки розташовані в нижній частині wtd_fast.webp. */
-.rest-choice-hotspot{left:6%;width:88%;height:7%;}
-.rest-choice-1{top:64%;}.rest-choice-2{top:72%;}.rest-choice-3{top:80%;}.rest-choice-4{top:88%;}
-.night-next-hotspot{left:5%;top:82%;width:90%;height:15%;}
-.day-summary-next-hotspot{left:7%;top:83%;width:86%;height:12%;}
+.rest-choice-hotspot{left:8.3333%;width:83.3333%;height:6.4103%;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.rest-choice-1{top:64.5299%;}.rest-choice-2{top:72.2222%;}.rest-choice-3{top:79.9145%;}.rest-choice-4{top:87.6068%;}
+.night-next-hotspot{left:8.3333%;top:87.6068%;width:83.3333%;height:6.4103%;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.day-summary-next-hotspot{left:8.3333%;top:87.6068%;width:83.3333%;height:6.4103%;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
 
 
 /* Інтерактивний душ: справжній touch-повзунок поверх намальованої шкали. */

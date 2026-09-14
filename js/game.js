@@ -121,11 +121,11 @@ function renderCalls(which){
  const prefix=isAfternoon?'a':'m';
  render(`<div class="card call-list-image-card"><div class="call-list-image">
  <img src="${img}" alt="Список коллів">
- <div class="quest-progress">${done.size}/${arr.length}</div>
- <button class="call-list-hotspot" style="top:55.6%" data-call="${prefix}1"></button>
- <button class="call-list-hotspot" style="top:64%" data-call="${prefix}2"></button>
- <button class="call-list-hotspot" style="top:72.3%" data-call="${prefix}3"></button>
- <button class="call-list-hotspot" style="top:80.6%" data-call="${prefix}4"></button>
+ <div class="quest-progress">${done.size}/${isAfternoon?4:arr.length}</div>
+ <button class="call-list-hotspot" style="top:64.5299%" data-call="${prefix}1"></button>
+ <button class="call-list-hotspot" style="top:72.2222%" data-call="${prefix}2"></button>
+ <button class="call-list-hotspot" style="top:79.9145%" data-call="${prefix}3"></button>
+ <button class="call-list-hotspot" style="top:87.6068%" data-call="${prefix}4"></button>
  </div></div>`);
  document.querySelectorAll('[data-call]').forEach(b=>b.onclick=()=>openCall(which,b.dataset.call));
 }
@@ -207,9 +207,9 @@ function renderLaundry(){
  const done=S.laundry.size;
  render(`<div class="card breakfast-image-card"><div class="breakfast-image">
  <img src="images/1sock.webp" alt="18:00 — Час прати!">
- <button class="laundry-hotspot" style="top:72.6%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
- <button class="laundry-hotspot" style="top:82.1%" data-laundry="hang" aria-label="Розвісити білизну"></button>
- <button class="laundry-hotspot" style="top:91.2%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
+ <button class="laundry-hotspot" style="top:72.2222%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
+ <button class="laundry-hotspot" style="top:79.9145%" data-laundry="hang" aria-label="Розвісити білизну"></button>
+ <button class="laundry-hotspot" style="top:87.6068%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
  <div class="quest-progress">${done}/3</div>
  </div></div>`);
  document.querySelectorAll('[data-laundry]').forEach(b=>b.onclick=()=>completeLaundry(b.dataset.laundry));
@@ -340,9 +340,9 @@ function renderGym(){
  setClock('19:15');
  render(`<div class="card breakfast-image-card"><div class="breakfast-image">
  <img src="images/gym.webp" alt="Індик у залі — три завдання">
- <button class="laundry-hotspot" style="top:72.6%" data-gym="task1" aria-label="Перше завдання в залі"></button>
- <button class="laundry-hotspot" style="top:82.1%" data-gym="task2" aria-label="Друге завдання в залі"></button>
- <button class="laundry-hotspot" style="top:91.2%" data-gym="task3" aria-label="Третє завдання в залі"></button>
+ <button class="laundry-hotspot" style="top:72.2222%" data-gym="task1" aria-label="Перше завдання в залі"></button>
+ <button class="laundry-hotspot" style="top:79.9145%" data-gym="task2" aria-label="Друге завдання в залі"></button>
+ <button class="laundry-hotspot" style="top:87.6068%" data-gym="task3" aria-label="Третє завдання в залі"></button>
  <div class="quest-progress">${done}/3</div>
  </div></div>`);
  document.querySelectorAll('[data-gym]').forEach(b=>b.onclick=()=>completeGym(b.dataset.gym));
@@ -430,9 +430,9 @@ function renderToothpasteQuest(){
  render(`<div class="card laundry-card"><div class="laundry-scene">
  <img src="images/toothpaste.webp" alt="00:50 — Вечірній квест">
  <div class="quest-progress">${done}/3</div>
- <button class="laundry-hotspot" style="top:69%;height:10%" data-sleep="teeth" aria-label="Перше завдання"></button>
- <button class="laundry-hotspot" style="top:79%;height:10%" data-sleep="alarm" aria-label="Друге завдання"></button>
- <button class="laundry-hotspot" style="top:89%;height:10%" data-sleep="light" aria-label="Третє завдання"></button>
+ <button class="laundry-hotspot" style="top:72.2222%;height:6.4103%" data-sleep="teeth" aria-label="Перше завдання"></button>
+ <button class="laundry-hotspot" style="top:79.9145%;height:6.4103%" data-sleep="alarm" aria-label="Друге завдання"></button>
+ <button class="laundry-hotspot" style="top:87.6068%;height:6.4103%" data-sleep="light" aria-label="Третє завдання"></button>
  </div></div>`);
  document.querySelectorAll('[data-sleep]').forEach(b=>b.onclick=()=>{
    S.sleep.add(b.dataset.sleep);
