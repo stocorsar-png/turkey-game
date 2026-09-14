@@ -236,9 +236,9 @@ function renderLaundry(){
  const done=S.laundry.size;
  render(`<div class="card breakfast-image-card"><div class="breakfast-image">
  <img src="images/1sock.webp" alt="18:00 — Час прати!">
- <button class="laundry-hotspot" style="top:72.6%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
- <button class="laundry-hotspot" style="top:82.1%" data-laundry="hang" aria-label="Розвісити білизну"></button>
- <button class="laundry-hotspot" style="top:91.2%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
+ <button class="laundry-hotspot" style="top:72.2222%" data-laundry="wash" aria-label="Завантажити пральну машину"></button>
+ <button class="laundry-hotspot" style="top:79.9145%" data-laundry="hang" aria-label="Розвісити білизну"></button>
+ <button class="laundry-hotspot" style="top:87.6068%" data-laundry="sock" aria-label="Знайти другу шкарпетку"></button>
  <div class="quest-progress">${done}/3</div>
  </div></div>`);
  document.querySelectorAll('[data-laundry]').forEach(b=>b.onclick=()=>completeLaundry(b.dataset.laundry));

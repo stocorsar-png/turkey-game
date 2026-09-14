@@ -121,11 +121,11 @@ function renderCalls(which){
  const prefix=isAfternoon?'a':'m';
  render(`<div class="card call-list-image-card"><div class="call-list-image">
  <img src="${img}" alt="Список коллів">
- <div class="quest-progress">${done.size}/${isAfternoon?4:arr.length}</div>
- <button class="call-list-hotspot" style="top:64.5299%" data-call="${prefix}1"></button>
- <button class="call-list-hotspot" style="top:72.2222%" data-call="${prefix}2"></button>
- <button class="call-list-hotspot" style="top:79.9145%" data-call="${prefix}3"></button>
- <button class="call-list-hotspot" style="top:87.6068%" data-call="${prefix}4"></button>
+ <div class="quest-progress">${done.size}/4</div>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'58.55%':'64.5299%'}" data-call="${prefix}1"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'67.91%':'72.2222%'}" data-call="${prefix}2"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'76.79%':'79.9145%'}" data-call="${prefix}3"></button>
+ <button class="call-list-hotspot" style="top:${isAfternoon?'85.56%':'87.6068%'}" data-call="${prefix}4"></button>
  </div></div>`);
  document.querySelectorAll('[data-call]').forEach(b=>b.onclick=()=>openCall(which,b.dataset.call));
 }
