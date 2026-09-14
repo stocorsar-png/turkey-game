@@ -33,7 +33,7 @@ button:disabled{opacity:.45;cursor:default}
 .evening-hotspot{height:6.4103%;left:8.3333%;right:auto;width:83.3333%}
 .evening-dimon{top:64.5299%}.evening-maika{top:72.2222%}.evening-mykyta{top:79.9145%}.evening-dinner{top:87.6068%}
 /* Вибір Дімона — 3 кнопки. */
-.dimon-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;pointer-events:auto!important;touch-action:manipulation!important}.dimon-call{top:72.2222%}.dimon-walk{top:79.9145%}.dimon-refuse{top:87.6068%}
+.dimon-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;pointer-events:auto!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}.dimon-call{top:72.2222%}.dimon-walk{top:79.9145%}.dimon-refuse{top:87.6068%}
 /* Вибір Майки — 3 однакові кнопки. */
 .maika-choice{height:6.4103%;left:8.3333%;right:auto;width:83.3333%;pointer-events:auto!important;touch-action:manipulation!important}.maika-1{top:72.2222%}.maika-2{top:79.9145%}.maika-3{top:87.6068%}
 /* Вибір Микити — 4 кнопки: синя, червона, зелена, фіолетова. */

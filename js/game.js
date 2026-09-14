@@ -241,40 +241,21 @@ function eveningChoice(){
 
 function dimonChoice(){
  setClock('18:05');
- render(`<div class="card person-choice-card"><div class="person-choice-scene dimon-choice-scene" id="dimonChoiceScene">
-  <img src="images/dimon_to_do.webp?v=4" alt="Дімон — що обираємо?" draggable="false">
+ render(`<div class="card person-choice-card"><div class="person-choice-scene dimon-choice-scene">
+  <img src="images/dimon_to_do.webp?v=5" alt="Дімон — що обираємо?" draggable="false">
+  <button class="person-choice-hotspot dimon-choice dimon-call" id="dimonCallChoice" aria-label="ПОДЗВОНИТИ ДІМОНУ"></button>
+  <button class="person-choice-hotspot dimon-choice dimon-walk" id="dimonWalkChoice" aria-label="ПРОГУЛЯНКА З ДІМОНОМ"></button>
+  <button class="person-choice-hotspot dimon-choice dimon-refuse" id="dimonRefuseChoice" aria-label="ВІДМОВИТИСЯ"></button>
  </div></div>`);
- const scene=document.getElementById('dimonChoiceScene');
- // Один-єдиний touch hit-test по фактичній координаті пальця.
- // Це прибирає будь-яку можливість, що «прогулянка» випадково викличе «дзвінок».
- const chooseDimon=(e)=>{
-   e.preventDefault();
-   const r=scene.getBoundingClientRect();
-   const y=(e.clientY-r.top)/r.height;
-   if(y>=0.615 && y<0.680){
-     dimonCallScene();
-   } else if(y>=0.680 && y<0.747){
-     warningThenNight('images/dimon_drink.webp?v=4');
-   } else if(y>=0.747 && y<0.815){
-     dinner();
-   }
- };
- scene.addEventListener('pointerup',chooseDimon,{passive:false});
- scene.addEventListener('click',e=>{
-   // Desktop fallback; touch browsers are handled by pointerup above.
-   if(e.detail===0)return;
-   const r=scene.getBoundingClientRect();
-   const y=(e.clientY-r.top)/r.height;
-   if(y>=0.615 && y<0.680) dimonCallScene();
-   else if(y>=0.680 && y<0.747) warningThenNight('images/dimon_drink.webp?v=4');
-   else if(y>=0.747 && y<0.815) dinner();
- });
+ document.getElementById('dimonCallChoice').onclick=dimonCallScene;
+ document.getElementById('dimonWalkChoice').onclick=()=>warningThenNight('images/dimon_drink.webp?v=4');
+ document.getElementById('dimonRefuseChoice').onclick=dinner;
 }
 
 function dimonCallScene(){
  render(`<div class="card night-image-card"><div class="night-image-scene">
   <img src="images/dimon_call.webp" alt="Колл із Дімоном">
-  <button class="night-next-hotspot" id="dimonCallNext" aria-label="А ось тепер вечеря!"></button>
+  <button class="night-next-hotspot" id="dimonCallNext" style="top:83.3%;height:6.4%" aria-label="А ось тепер вечеря!"></button>
  </div></div>`);
  document.getElementById('dimonCallNext').onclick=dinner;
 }
