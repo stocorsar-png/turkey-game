@@ -121,7 +121,6 @@ function renderCalls(which){
  const prefix=isAfternoon?'a':'m';
  render(`<div class="card call-list-image-card"><div class="call-list-image">
  <img src="${img}" alt="Список коллів">
- <div class="quest-progress">${done.size}/${arr.length}</div>
  <button class="call-list-hotspot" style="top:55.6%" data-call="${prefix}1"></button>
  <button class="call-list-hotspot" style="top:64%" data-call="${prefix}2"></button>
  <button class="call-list-hotspot" style="top:72.3%" data-call="${prefix}3"></button>
@@ -393,7 +392,9 @@ function dinnerAfterFood(){
  document.getElementById('foxPark').onclick=()=>lisaMeeting('park');
 }
 function lisaMeeting(where){
- const choice = where==='laptop' ? 'slow_foxes' : 'fox_forest';
+ // Логіка за правилами гри: FAST FOX → 4 кнопки; SLOW FOX → 3 кнопки.
+ // Гілки були переплутані, тому міняємо їх місцями.
+ const choice = where==='laptop' ? 'fox_forest' : 'slow_foxes';
  const src = choice==='slow_foxes' ? 'images/slow_fox.webp' : 'images/fast_fox.webp';
  S.fox=choice;
  render(`<div class="card fox-meeting-card"><div class="fox-meeting-scene">
@@ -404,10 +405,10 @@ function lisaMeeting(where){
 }
 function restChoice(){
  setClock('21:30');
- /* Нова логіка після вибору лиси:
-    slow_foxes — рівно 3 активні кнопки;
-    лиса у лісі (fox_forest) — усі 4 активні кнопки. */
- const count=S.fox==='slow_foxes'?3:4;
+ /* Після вибору лиси:
+    FAST FOX (fox_forest) — рівно 4 активні кнопки;
+    SLOW FOX (slow_foxes) — рівно 3 активні кнопки. */
+ const count=S.fox==='fox_forest'?4:3;
  const hotspots=Array.from({length:count},(_,i)=>`<button class="rest-choice-hotspot rest-choice-${i+1}" data-rest="${i+1}" aria-label="Варіант відпочинку ${i+1}"></button>`).join('');
  render(`<div class="card rest-choice-card"><div class="rest-choice-scene">
  <img src="images/wtd_fast.webp" alt="21:30 — Відпочинок">
