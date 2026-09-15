@@ -453,19 +453,27 @@ function birthday(){
 }
 function birthdayGift(){
  setClock('00:55');
- render(`<div class="card day-summary-card finale-card gift-scene"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene gift-final-scene">
  <img src="images/pizdarunok.webp" alt="Подарунок">
  <button class="day-summary-next-hotspot" id="gift" aria-label="Відкрити подарунок"></button>
  </div></div>`);
- document.getElementById('gift').onclick=giftWaitsAtHome;
+ const gift=document.getElementById('gift');
+ if(gift){
+   gift.addEventListener('pointerup', ()=>{
+     gift.disabled=true;
+     gift.style.pointerEvents='none';
+     giftNext();
+   }, {once:true});
+ }
 }
-function giftWaitsAtHome(){
+function giftNext(){
  setClock('00:55');
- render(`<div class="card day-summary-card finale-card gift-waits-scene"><div class="night-image-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene gift-home-scene">
  <img src="images/pizdarunok_waits_at_home.webp" alt="Він з П’ятачоком чекають на тебе вдома">
- <div class="gift-fireworks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+ <div class="gift-confetti" aria-hidden="true">${Array.from({length:24},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div>
  </div></div>`);
+ setTimeout(()=>eventEffect('success'),120);
 }
 
-// The game is intentionally public: no secret query-string gate.
+// The game is now public: no secret query parameter is required.
 calendar();
