@@ -459,11 +459,14 @@ function birthdayGift(){
  </div></div>`);
  const gift=document.getElementById('gift');
  if(gift){
-   gift.addEventListener('pointerup', ()=>{
-     gift.disabled=true;
+   const openGift=()=>{
+     if(gift.dataset.opened==='1') return;
+     gift.dataset.opened='1';
      gift.style.pointerEvents='none';
      giftNext();
-   }, {once:true});
+   };
+   gift.addEventListener('pointerup', openGift, {once:true});
+   gift.addEventListener('click', openGift, {once:true});
  }
 }
 function giftNext(){
