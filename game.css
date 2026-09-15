@@ -176,3 +176,25 @@ button:active{transform:scale(.985);filter:brightness(.88)}
 .finale-card .night-image-scene img{animation:finaleReveal .9s ease-out both;}
 @keyframes finaleReveal{from{opacity:.72;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.finale-card .night-image-scene img{animation:none!important}}
+
+/* v19: festive finale — fireworks on the gift-at-home scene only. */
+.gift-waits-scene .night-image-scene{position:relative;overflow:hidden}
+.gift-fireworks{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.gift-fireworks i{position:absolute;width:10px;height:28px;border-radius:5px;background:#F2E7D0;opacity:0;transform:translate(-50%,-50%) rotate(0deg);animation:giftFirework 1.8s ease-out infinite}
+.gift-fireworks i:nth-child(1){left:17%;top:23%;animation-delay:.05s;--dx:-48px;--dy:-72px;--r:18deg}
+.gift-fireworks i:nth-child(2){left:17%;top:23%;animation-delay:.05s;--dx:0;--dy:-94px;--r:0deg}
+.gift-fireworks i:nth-child(3){left:17%;top:23%;animation-delay:.05s;--dx:52px;--dy:-66px;--r:-18deg}
+.gift-fireworks i:nth-child(4){left:83%;top:27%;animation-delay:.55s;--dx:-52px;--dy:-64px;--r:18deg}
+.gift-fireworks i:nth-child(5){left:83%;top:27%;animation-delay:.55s;--dx:0;--dy:-92px;--r:0deg}
+.gift-fireworks i:nth-child(6){left:83%;top:27%;animation-delay:.55s;--dx:48px;--dy:-60px;--r:-18deg}
+.gift-fireworks i:nth-child(7){left:50%;top:38%;animation-delay:1.05s;--dx:-42px;--dy:-58px;--r:20deg}
+.gift-fireworks i:nth-child(8){left:50%;top:38%;animation-delay:1.05s;--dx:0;--dy:-82px;--r:0deg}
+.gift-fireworks i:nth-child(9){left:50%;top:38%;animation-delay:1.05s;--dx:44px;--dy:-58px;--r:-20deg}
+.gift-fireworks i:nth-child(10){left:50%;top:38%;animation-delay:1.05s;--dx:0;--dy:-42px;--r:90deg}
+@keyframes giftFirework{
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.25)}
+  18%{opacity:.95}
+  65%{opacity:.9;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r)) scale(1)}
+  100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r)) scale(.7)}
+}
+@media (prefers-reduced-motion:reduce){.gift-fireworks i{animation:none!important;opacity:.55}}
