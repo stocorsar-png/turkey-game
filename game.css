@@ -176,18 +176,3 @@ button:active{transform:scale(.985);filter:brightness(.88)}
 .finale-card .night-image-scene img{animation:finaleReveal .9s ease-out both;}
 @keyframes finaleReveal{from{opacity:.72;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.finale-card .night-image-scene img{animation:none!important}}
-
-/* v22 — gift images use the exact same .night-image-scene geometry as every other finale image. */
-/* The baked-in red button on pizdarunok.webp sits slightly above the generic hotspot. */
-.night-image-scene #gift.day-summary-next-hotspot{left:8.3333%;top:85.64%;width:83.3333%;height:7.85%;min-height:0!important;margin:0!important;padding:0!important;z-index:20!important;pointer-events:auto!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
-.gift-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:4}
-.gift-confetti i{position:absolute;left:50%;top:42%;width:10px;height:22px;border-radius:2px;background:#F2E7D0;opacity:0;transform:translate(-50%,-50%);animation:gift-confetti-burst 1.9s cubic-bezier(.18,.72,.2,1) forwards;animation-delay:calc(var(--i) * 0.025s);}
-.gift-confetti i:nth-child(3n){background:#9E153A}
-.gift-confetti i:nth-child(3n+1){background:#3F7628}
-.gift-confetti i:nth-child(4n){background:#155B8F}
-.gift-confetti i:nth-child(5n){background:#563A75}
-@keyframes gift-confetti-burst{
-  0%{opacity:0;transform:translate(-50%,-50%) rotate(0deg) scale(.5)}
-  10%{opacity:1}
-  100%{opacity:.9;transform:translate(calc(-50% + (var(--i) - 12)*42px),calc(-50% + 360px)) rotate(calc(var(--i)*31deg)) scale(1)}
-}
