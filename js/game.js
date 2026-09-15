@@ -455,18 +455,17 @@ function birthdayGift(){
  setClock('00:55');
  render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/pizdarunok.webp" alt="Подарунок">
- <button class="day-summary-next-hotspot" id="gift" aria-label="Отримати гроші через Revolut"></button>
+ <button class="day-summary-next-hotspot gift-hotspot" id="gift" aria-label="Відкрити подарунок"></button>
  </div></div>`);
- document.getElementById('gift').onclick=finalGift;
+ document.getElementById('gift').onclick=giftNext;
 }
-function finalGift(){
- const REVOLUT_LINK='https://revolut.me/p/bEG59iMq4o';
- window.open(REVOLUT_LINK,'_blank','noopener');
+function giftNext(){
+ setClock('00:55');
+ render(`<div class="card day-summary-card gift-home-card"><div class="night-image-scene">
+ <img src="images/pizdarunok_waits_at_home.webp" alt="Він з П’ятачоком чекають на тебе вдома">
+ </div></div>`);
 }
-const SECRET_TOKEN='7Kx92LmP4Q';
-const params=new URLSearchParams(window.location.search);
-const hasSecret=params.get('gift')===SECRET_TOKEN;
-if(hasSecret){calendar();}else{
- setClock('');
- render(`<div class="card" style="display:flex;align-items:center;justify-content:center;min-height:70vh;text-align:center;padding:30px"><div><h2>🔒 ДОСТУП ЗАКРИТО</h2><p>Цей подарунок доступний лише за спеціальним посиланням.</p></div></div>`);
-}
+
+// Public game: no secret query parameter is required.
+calendar();
+

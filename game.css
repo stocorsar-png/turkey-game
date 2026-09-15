@@ -176,3 +176,10 @@ button:active{transform:scale(.985);filter:brightness(.88)}
 .finale-card .night-image-scene img{animation:finaleReveal .9s ease-out both;}
 @keyframes finaleReveal{from{opacity:.72;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.finale-card .night-image-scene img{animation:none!important}}
+
+/* v23: gift scenes use the exact same night-image-scene sizing as every other night scene.
+   The first gift image has its baked-in button slightly above the standard hotspot, so
+   only its transparent touch target is aligned to the visible button. */
+.gift-hotspot{top:85.68%;height:7.61%;}
+/* The last gift scene is static: no reveal/confetti animation. */
+.gift-home-card .night-image-scene img{animation:none!important;transform:none!important;}
