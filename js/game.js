@@ -453,7 +453,7 @@ function birthday(){
 }
 function birthdayGift(){
  setClock('00:55');
- render(`<div class="card day-summary-card finale-card"><div class="night-image-scene gift-final-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/pizdarunok.webp" alt="Подарунок">
  <button class="day-summary-next-hotspot" id="gift" aria-label="Відкрити подарунок"></button>
  </div></div>`);
@@ -471,7 +471,7 @@ function birthdayGift(){
 }
 function giftNext(){
  setClock('00:55');
- render(`<div class="card day-summary-card finale-card"><div class="night-image-scene gift-home-scene">
+ render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/pizdarunok_waits_at_home.webp" alt="Він з П’ятачоком чекають на тебе вдома">
  <div class="gift-confetti" aria-hidden="true">${Array.from({length:24},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div>
  </div></div>`);

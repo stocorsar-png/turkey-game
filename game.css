@@ -177,13 +177,9 @@ button:active{transform:scale(.985);filter:brightness(.88)}
 @keyframes finaleReveal{from{opacity:.72;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.finale-card .night-image-scene img{animation:none!important}}
 
-/* v19 — festive gift reveal. The artwork itself stays unchanged. */
-.gift-home-scene{position:relative;overflow:hidden}
-/* v21 — gift scene uses the exact same full-screen image geometry as the other finale screens. */
-.gift-final-scene,.gift-home-scene{width:100%;height:100dvh;max-height:100dvh;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
-.gift-final-scene img,.gift-home-scene img{width:auto!important;height:100%!important;max-width:100%!important;max-height:100dvh!important;object-fit:contain!important;margin:0 auto!important}
-/* The baked-in red button on pizdarunok.webp starts higher than the generic finale hotspot. */
-.gift-final-scene .day-summary-next-hotspot{left:8.3333%;top:85.64%;width:83.3333%;height:7.85%;min-height:0!important;margin:0!important;padding:0!important;z-index:20!important;pointer-events:auto!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+/* v22 — gift images use the exact same .night-image-scene geometry as every other finale image. */
+/* The baked-in red button on pizdarunok.webp sits slightly above the generic hotspot. */
+.night-image-scene #gift.day-summary-next-hotspot{left:8.3333%;top:85.64%;width:83.3333%;height:7.85%;min-height:0!important;margin:0!important;padding:0!important;z-index:20!important;pointer-events:auto!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
 .gift-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:4}
 .gift-confetti i{position:absolute;left:50%;top:42%;width:10px;height:22px;border-radius:2px;background:#F2E7D0;opacity:0;transform:translate(-50%,-50%);animation:gift-confetti-burst 1.9s cubic-bezier(.18,.72,.2,1) forwards;animation-delay:calc(var(--i) * 0.025s);}
 .gift-confetti i:nth-child(3n){background:#9E153A}
