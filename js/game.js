@@ -455,17 +455,13 @@ function birthdayGift(){
  setClock('00:55');
  render(`<div class="card day-summary-card finale-card"><div class="night-image-scene">
  <img src="images/pizdarunok.webp" alt="Подарунок">
- <button class="day-summary-next-hotspot gift-hotspot" id="gift" aria-label="Відкрити подарунок"></button>
+ <button class="day-summary-next-hotspot" id="gift" aria-label="Отримати гроші через Revolut"></button>
  </div></div>`);
- document.getElementById('gift').onclick=giftNext;
+ document.getElementById('gift').onclick=finalGift;
 }
-function giftNext(){
- setClock('00:55');
- render(`<div class="card day-summary-card gift-home-card"><div class="night-image-scene">
- <img src="images/pizdarunok_waits_at_home.webp" alt="Він з П’ятачоком чекають на тебе вдома">
- </div></div>`);
+function finalGift(){
+ const REVOLUT_LINK='https://revolut.me/p/bEG59iMq4o';
+ window.open(REVOLUT_LINK,'_blank','noopener');
 }
-
-// Public game: no secret query parameter is required.
+// Public access: no secret query parameter is required.
 calendar();
-
